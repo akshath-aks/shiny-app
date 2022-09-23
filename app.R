@@ -43,10 +43,11 @@ ui<-fluidPage(
 
 server<-function(input,output){
   output$selected_result<- renderText({ 
-    paste("You have selected this",input$party,"party.",input$party,"received","votes this year.")
+    party_data<-result_p[which(result_p$parties==input$party),"voices 2022"]
+    paste("You have selected this",input$party,"party.",input$party,"received",party_data,"votes this year.")
   })
   output$distplot<-renderPlot({
-   ggplot(data=get_combined_data(),aes(x=party,y=input$type))+geom_histogram(fill="red",color="black")
+   ggplot(data=result_p,aes(x=parties,y=input$type))+geom_bar(stat="identity",fill="red",color="black")
   })
 }
 shinyApp(ui=ui,server=server)
