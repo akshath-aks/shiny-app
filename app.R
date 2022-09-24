@@ -20,7 +20,7 @@ ui<-fluidPage(
                                    "voices 2018",
                                    "shares 2018(%)",
                                    "mandate 2022",
-                                   "diff mandate",
+                                   "Diff mandate",
                                    "mandate 2018",
                                    "voices 2022 including assembly districts",
                                    "shares 2022 including assembly districts(%)",
