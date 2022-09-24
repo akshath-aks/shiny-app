@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(devtools)
+devtools::install_github('akshath-aks/Valmyndigheten')
 library(Valmyndigheten)
 result_combined<-get_combined_data()
 
