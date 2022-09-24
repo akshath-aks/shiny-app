@@ -12,7 +12,7 @@ ui<-fluidPage(
   sidebarLayout(
         sidebarPanel(
              selectInput("type",
-                         label="Choose a stastistic type to display data for each political party",
+                         label="Choose a stastistic type to display for political parties.",
                          choices=c("voices 2022",
                                    "shares 2022(%)",
                                    "Diff voices",
