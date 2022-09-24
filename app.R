@@ -46,7 +46,9 @@ server<-function(input,output){
    ggplot(data=result_combined,aes(x=parties,y=get(input$type)))+
       geom_bar(stat='identity',fill="blue",color="black")+
       ylab(input$type)+
-      theme(axis.text.x = element_text(angle=45, vjust=1., hjust=1))
+      labs(title=input$type, caption="column names contain (a) include assembly districts") +
+      theme(axis.text.x = element_text(angle=45, vjust=1., hjust=1)
+            ,plot.title = element_text(hjust = 0.5))
   })
 }
 shinyApp(ui=ui,server=server)
