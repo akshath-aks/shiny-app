@@ -29,7 +29,20 @@ ui<-fluidPage(
                                    "Diff voices",
                                    "Diff shares",
                                    "voices 2018",
-                                   "shares 2018"),
+                                   "shares 2018",
+                                   "mandate 2022",
+                                   "diff mandate",
+                                   "mandate 2018",
+                                   "voices 2022(a)",
+                                   "shares 2022(a)",
+                                   "Diff voices(a)",
+                                   "Diff shares(a)",
+                                   "voices 2018(a)",
+                                   "shares 2018(a)",
+                                   "mandate 2022(a)",
+                                   "diff mandate(a)",
+                                   "mandate 2018(a)"
+                                   ),
                          selected="voices 2022")
                     ),
                                   
@@ -42,11 +55,11 @@ ui<-fluidPage(
 
 server<-function(input,output){
   output$selected_result<- renderText({ 
-    party_data<-result_p[which(result_p$parties==input$party),"voices 2022"]
+    party_data<-result_combined[which(result_combined$parties==input$party),"voices 2022"]
     paste("You have selected this",input$party,"party.",input$party,"received",party_data,"votes this year.")
   })
   output$distplot<-renderPlot({
-   ggplot(data=result_p,aes(x=parties,y=get(input$type)))+
+   ggplot(data=result_combined,aes(x=parties,y=get(input$type)))+
       geom_bar(stat='identity',fill="blue",color="black")+
       ylab(input$type)+
       theme(axis.text.x = element_text(angle=45, vjust=1., hjust=1))
