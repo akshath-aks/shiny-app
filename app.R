@@ -1,5 +1,4 @@
 library(shiny)
-library(readxl)
 library(ggplot2)
 library(devtools)
 devtools::install_github("akshath-aks/Valmyndigheten")
@@ -47,7 +46,10 @@ server<-function(input,output){
     paste("You have selected this",input$party,"party.",input$party,"received",party_data,"votes this year.")
   })
   output$distplot<-renderPlot({
-   ggplot(data=result_p,aes(x=parties,y=input$type))+geom_bar(stat="identity",fill="red",color="black")
+   ggplot(data=result_p,aes(x=parties,y=get(input$type)))+
+      geom_bar(stat='identity',fill="blue",color="black")+
+      ylab(input$type)+
+      theme(axis.text.x = element_text(angle=45, vjust=1., hjust=1))
   })
 }
 shinyApp(ui=ui,server=server)
