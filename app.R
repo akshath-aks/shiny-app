@@ -36,7 +36,7 @@ ui<-fluidPage(
                     ),
                                   
         mainPanel(
-           plotOutput("distplot")
+           plotOutput("distplot",height='650px')
                   )
   )
 )
@@ -45,9 +45,10 @@ server<-function(input,output){
   output$distplot<-renderPlot({
    ggplot(data=result_combined,aes(x=parties,y=get(input$type)))+
       geom_bar(stat='identity',fill="blue",color="black")+
-      labs(title=input$type,y="count") +
-      theme(axis.text.x = element_text(angle=45, vjust=1., hjust=1)
-            ,plot.title = element_text(hjust = 0.5))
+      labs(title=input$type,x='Parties',y="Count") +
+      theme(axis.text.x = element_text(angle=45, vjust=1., hjust=1, face = 'bold',size=10)
+            ,plot.title = element_text(hjust = 0.5, face = 'bold'),
+            axis.title = element_text(face='bold', size = 20))
   })
 }
 shinyApp(ui=ui,server=server)
