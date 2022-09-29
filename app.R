@@ -13,25 +13,9 @@ ui<-fluidPage(
         sidebarPanel(
              selectInput("type",
                          label="Choose a stastistic type to display for political parties.",
-                         choices=c("voices 2022",
-                                   "shares 2022(%)",
-                                   "Diff voices",
-                                   "Diff shares(%)",
-                                   "voices 2018",
-                                   "shares 2018(%)",
-                                   "mandate 2022",
-                                   "Diff mandate",
-                                   "mandate 2018",
-                                   "voices 2022 including assembly districts",
-                                   "shares 2022 including assembly districts(%)",
-                                   "Diff voices including assembly districts",
-                                   "Diff shares including assembly districts(%)",
-                                   "voices 2018 including assembly districts",
-                                   "shares 2018 including assembly districts(%)",
-                                   "mandate 2022 including assembly districts",
-                                   "Diff mandate including assembly districts",
-                                   "mandate 2018 including assembly districts"
-                                   ),
+                         choices=c(colnames(result_combined[-1])),
+                         
+                                   
                          selected="voices 2022")
                     ),
                                   
@@ -53,3 +37,4 @@ server<-function(input,output){
   })
 }
 shinyApp(ui=ui,server=server)
+
